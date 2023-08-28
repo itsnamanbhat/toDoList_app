@@ -3,6 +3,7 @@ const { log } = require("console");
 const express = require("express");
 const mongoose = require("mongoose");
 const _= require("lodash");
+const dotenv= require("dotenv").config();
  
 const app = express();
  
@@ -14,7 +15,7 @@ app.use(express.static("public"));
 run();
 async function run() {
   try {
-    mongoose.connect("mongodb+srv://naman_admin:itsnaman@cluster0.ruvty8l.mongodb.net/todolistDB");
+    mongoose.connect(process.env.mongoDbUrl);
  
     const itemsSchema = new mongoose.Schema({
       name: String,
